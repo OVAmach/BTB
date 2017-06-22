@@ -1,0 +1,115 @@
+settings: 
+    debug: true
+    log: true
+intensifySettings:
+    maxLevel: 12
+    duangMode: true
+    userMaxDuang: 1
+    breakPriceEnable: true
+    equip: 
+        - item_Name: DIAMOND_SWORD
+          property_Type: attack
+          property_Range: 0.1~1.0
+          duang_Lvl: 9
+          duang_Type: 2
+          special_Lvl: []
+          special_Type: []
+        - item_Name: DIAMOND_HELMET
+          property_Type: armor
+          property_Range: 0.1~1.0
+          duang_Lvl: 9
+          duang_Type: 2
+          special_Lvl: [11,12]
+          special_Type: ["NIGHT_VISION:1","NIGHT_VISION:1,REGENERATION:1"]
+        - item_Name: DIAMOND_CHESTPLATE
+          property_Type: armor
+          property_Range: 0.1~1.0
+          duang_Lvl: 9
+          duang_Type: 2
+          special_Lvl: [11,12]
+          special_Type: ["DAMAGE_RESISTANCE:1","DAMAGE_RESISTANCE:2"]
+        - item_Name: DIAMOND_LEGGINGS
+          property_Type: armor
+          property_Range: 0.1~1.0
+          duang_Lvl: 9
+          duang_Type: 2
+          special_Lvl: [11,12]
+          special_Type: ["SPEED:1","SPEED:2"]
+        - item_Name: DIAMOND_BOOTS
+          property_Type: armor
+          property_Range: 0.1~1.0
+          duang_Lvl: 9
+          duang_Type: 2
+          special_Lvl: [11,12]
+          special_Type: ["JUMP:1","JUMP:2"]
+        - item_Name: BOW
+          property_Type: shoot
+          property_Range: 0.1~1.0
+          duang_Lvl: 9
+          duang_Type: 2
+          special_Lvl: []
+          special_Type: []
+    material: 
+        - item_Name: DIAMOND_BLOCK
+          lvl_1_Full_Chance: 80.0
+          lvl_2_Full_Chance: 70.0
+          lvl_3_Full_Chance: 60.0
+          lvl_4_Full_Chance: 50.0
+          lvl_other_Full_Chance: 0.0
+        - item_Name: EMERALD_BLOCK
+          lvl_5_Full_Chance: 80.0
+          lvl_6_Full_Chance: 70.0
+          lvl_7_Full_Chance: 60.0
+          lvl_8_Full_Chance: 50.0
+          lvl_other_Full_Chance: 0.0
+        - item_Name: NETHER_STAR
+          lvl_9_Full_Chance: 1000.0
+          lvl_10_Full_Chance: 600.0
+          lvl_11_Full_Chance: 0.0
+          lvl_12_Full_Chance: 0.0
+          lvl_other_Full_Chance: 1000.0
+        - item_Name: DRAGON_EGG
+          lvl_11_Full_Chance: 1000.0
+          lvl_12_Full_Chance: 600.0
+          lvl_other_Full_Chance: 1000.0
+    level:
+        - lvl: 1
+          intensify_Fail: none
+          broadcast: false
+        - lvl: 2
+          intensify_Fail: none
+          broadcast: false
+        - lvl: 3
+          intensify_Fail: none
+          broadcast: false
+        - lvl: 4
+          intensify_Fail: none
+          broadcast: false
+        - lvl: 5
+          intensify_Fail: none
+          broadcast: false
+        - lvl: 6
+          intensify_Fail: none
+          broadcast: false
+        - lvl: 7
+          intensify_Fail: down
+          broadcast: true
+        - lvl: 8
+          intensify_Fail: down
+          broadcast: true
+        - lvl: 9
+          intensify_Fail: down
+          broadcast: true
+        - lvl: 10
+          intensify_Fail: down
+          broadcast: true
+        - lvl: 11
+          intensify_Fail: break
+          broadcast: true
+        - lvl: 12
+          intensify_Fail: break
+          broadcast: true
+    breakPrice: 
+        item_Name: COAL
+        name: §8又黑又硬的神秘物质
+        lore: §r§7虽然看上去又黑又硬|§r§7但还可以拿来当柴烧
