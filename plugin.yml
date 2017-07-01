@@ -1,6 +1,6 @@
 name: BTB
 main: com.iteamcn.BTB.BTB
-version: 1.0
+version: 1.1.0
 author: OVAmach
 depend: [PowerNBT]
 

@@ -7,6 +7,7 @@ import java.util.Set;
 
 import org.bukkit.Bukkit;
 import org.bukkit.Effect;
+import org.bukkit.Location;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.potion.PotionEffect;
@@ -73,6 +74,7 @@ public class Duang extends BukkitRunnable {
 //	}
 	@Override
 	public void run() {
+		if(!(boolean)BTB.getIntensifySettings().get("duangMode"))return;
         final Player[] players = Bukkit.getOnlinePlayers().toArray(new Player[Bukkit.getOnlinePlayers().size()]);
         Player[] array;
         for (int length = (array = players).length, i = 0; i < length; ++i) {
@@ -92,8 +94,11 @@ public class Duang extends BukkitRunnable {
 	}
 	public static void showDuang(Player player,Integer[] duangID){
 		for(int i=0;i<duangID.length;i++){
-			if(duangID[i]==1)player.getWorld().playEffect(player.getLocation(), Effect.ENDER_SIGNAL, null, 20);
-			if(duangID[i]==2)player.getWorld().playEffect(player.getLocation(), Effect.MOBSPAWNER_FLAMES, null, 20);
+			Location t = player.getLocation();
+			if(duangID[i]==1)player.getWorld().playEffect(t, Effect.ENDER_SIGNAL, null, 20);
+			if(duangID[i]==2)player.getWorld().playEffect(t, Effect.MOBSPAWNER_FLAMES, null, 20);
+			//Bukkit.broadcastMessage(t.toString());
+			if(i==(int)BTB.getIntensifySettings().get("userMaxDuang")-1)break;
 		}
 
 	}

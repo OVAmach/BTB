@@ -7,6 +7,7 @@ import org.bukkit.Material;
 public class BTB_Equip {
 	private Material material;
 	private String property_Type;
+	private double property_Base=0;
 	private double property_Range_Min;
 	private double property_Range_Max;
 	private int duang_Lvl;
@@ -67,6 +68,13 @@ public class BTB_Equip {
 	}
 	public void setSpecial_Type(String[] special_Type) {
 		this.special_Type = special_Type;
+	}
+	
+	public double getProperty_Base() {
+		return property_Base;
+	}
+	public void setProperty_Base(double property_Base) {
+		this.property_Base = property_Base;
 	}
 	@Override
 	public String toString() {

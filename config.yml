@@ -1,18 +1,44 @@
 settings: 
+    #下方两个属性暂时无用
     debug: true
     log: true
 intensifySettings:
+    #最大强化等级，下方的等级列表数量必须匹配,int
     maxLevel: 12
+    #一次强化最多可使用的强化石的数量,int
+    maxMaterials: 5
+    #控制特效总开关,boolean
     duangMode: true
+    #每个玩家最多显示几个特效,int
     userMaxDuang: 1
+    #强化失败爆装备奖励开关,boolean
     breakPriceEnable: true
+    #强化装备配置表
     equip: 
+        #举个栗子
+        #- item_Name: DIAMOND_HELMET                                            #强化物:钻石头盔
+        #  property_Type: armor                                                 #强化类型:护甲
+        #  property_Base: 0                                                     #强化属性基础值:0
+        #  property_Range: 0.1~1.0                                              #强化属性范围:每级0.1~1.0
+        #  duang_Lvl: 9                                                         #特效出现等级:9
+        #  duang_Type: 2                                                        #特效类型:2刷怪笼火焰
+        #  special_Lvl: [11,12]                                                 #出现药水效果的等级:[11级,12级]
+        #  special_Type: ["NIGHT_VISION:1","NIGHT_VISION:1,REGENERATION:1"]     #药水效果:[11级时夜视1,12级时夜视1和生命恢复1]
+        #可强化的物品类型(参见BukkitAPI),String
         - item_Name: DIAMOND_SWORD
+        #强化属性类型(attack,armor,shoot三选一),String
           property_Type: attack
+        #可选参数，强化属性的基础值(例如钻石剑基础攻击力是7),double
+          property_Base: 7.0
+        #强化属性的范围(每级强化时随机，'~'分割上下限),String(double~double)
           property_Range: 0.1~1.0
+        #开始放特效的等级,int
           duang_Lvl: 9
+        #特效的类型(1末影,2刷怪笼火焰),int
           duang_Type: 2
+        #出现药水效果的强化等级,int[]
           special_Lvl: []
+        #药水效果的类型和等级,String[](String:int)
           special_Type: []
         - item_Name: DIAMOND_HELMET
           property_Type: armor
@@ -49,12 +75,16 @@ intensifySettings:
           duang_Type: 2
           special_Lvl: []
           special_Type: []
+    #强化石列表
     material: 
+        #强化石的物品类型
         - item_Name: DIAMOND_BLOCK
+        #放满这种强化石的0~1级的强化概率(根据maxMaterials数量计算)
           lvl_1_Full_Chance: 80.0
           lvl_2_Full_Chance: 70.0
           lvl_3_Full_Chance: 60.0
           lvl_4_Full_Chance: 50.0
+        #其他没有指定等级的强化概率
           lvl_other_Full_Chance: 0.0
         - item_Name: EMERALD_BLOCK
           lvl_5_Full_Chance: 80.0
@@ -63,18 +93,22 @@ intensifySettings:
           lvl_8_Full_Chance: 50.0
           lvl_other_Full_Chance: 0.0
         - item_Name: NETHER_STAR
-          lvl_9_Full_Chance: 1000.0
-          lvl_10_Full_Chance: 600.0
+          lvl_9_Full_Chance: 500.0
+          lvl_10_Full_Chance: 300.0
           lvl_11_Full_Chance: 0.0
           lvl_12_Full_Chance: 0.0
-          lvl_other_Full_Chance: 1000.0
+          lvl_other_Full_Chance: 500.0
         - item_Name: DRAGON_EGG
-          lvl_11_Full_Chance: 1000.0
-          lvl_12_Full_Chance: 600.0
-          lvl_other_Full_Chance: 1000.0
+          lvl_11_Full_Chance: 500.0
+          lvl_12_Full_Chance: 300.0
+          lvl_other_Full_Chance: 500.0
+    #等级必须按升序排列
     level:
+        #强化等级
         - lvl: 1
+        #失败时会怎样，none不做任何事,break爆装备,down降级
           intensify_Fail: none
+        #是否公告
           broadcast: false
         - lvl: 2
           intensify_Fail: none
@@ -109,7 +143,11 @@ intensifySettings:
         - lvl: 12
           intensify_Fail: break
           broadcast: true
+    #爆装备奖励
     breakPrice: 
+        #奖励的物品类型
         item_Name: COAL
+        #奖励的物品名
         name: §8又黑又硬的神秘物质
+        #奖励的物品说明
         lore: §r§7虽然看上去又黑又硬|§r§7但还可以拿来当柴烧

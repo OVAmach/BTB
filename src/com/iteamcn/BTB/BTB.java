@@ -57,7 +57,7 @@ public class BTB extends JavaPlugin {
 		getServer().getPluginManager().registerEvents(new InventoryMoveItemListener(), this);
 		init();
 		btb=this;
-		new Duang().runTaskTimer(this, 0L, 3L);
+		new Duang().runTaskTimer(this, 0L, 5L);
 		new Special().runTaskTimer(this,80L,0L);
 	}
 	public void init(){
@@ -71,6 +71,7 @@ public class BTB extends JavaPlugin {
 		//强化设置加载
 		intensifySettings.clear();
 		intensifySettings.put("maxLevel", config.getInt("intensifySettings.maxLevel"));
+		intensifySettings.put("maxMaterials", config.getInt("intensifySettings.maxMaterials"));
 		intensifySettings.put("duangMode", config.getBoolean("intensifySettings.duangMode"));
 		intensifySettings.put("userMaxDuang", config.getInt("intensifySettings.userMaxDuang"));
 		intensifySettings.put("breakPriceEnable", config.getBoolean("intensifySettings.breakPriceEnable"));
@@ -102,6 +103,10 @@ public class BTB extends JavaPlugin {
 		for(int i=0;i<equ.size();i++){
 			BTB_Equip temp=new BTB_Equip(Material.getMaterial((String)equ.get(i).get("item_Name")));
 			temp.setProperty_Type((String)equ.get(i).get("property_Type"));
+			if(equ.get(i).containsKey("property_Base")){
+				temp.setProperty_Base((double)equ.get(i).get("property_Base"));
+			}
+			
 			String[] t = ((String)equ.get(i).get("property_Range")).split("~");
 			temp.setProperty_Range(Double.valueOf(t[0]), Double.valueOf(t[1]));
 			temp.setDuang_Lvl((int)equ.get(i).get("duang_Lvl"));

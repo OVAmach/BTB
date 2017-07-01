@@ -61,7 +61,7 @@ public class Intensify{
 				checkCode-=(int)Math.pow(2, i);
 				switch(i){
 					case 9:
-						s.add("强化石数量不对，每个槽只能放两个");
+						s.add("强化石数量不对，最多只能放"+BTB.getIntensifySettings().get("maxMaterials")+"个强化石");
 						break;
 					case 8:
 						s.add("装备已满级");
@@ -105,7 +105,7 @@ public class Intensify{
 			Map<Material, BTB_Material> Material_Map = BTB.getMaterial_Map();
 			for(int i=0;i<5;i++){
 				if(mat[i]!=null){
-					s+=Material_Map.get(mat[i].getType()).getChance(lvl)/10.0*(double)mat[i].getAmount()/100.0;
+					s+=Material_Map.get(mat[i].getType()).getChance(lvl)/(double)((int)BTB.getIntensifySettings().get("maxMaterials"))*(double)mat[i].getAmount()/100.0;
 				}
 			}
 			return s;
@@ -144,17 +144,14 @@ public class Intensify{
 		}else{
 			if((!BTB.getEquip_Map().containsKey(eq.getType()))||eq.getAmount()!=1) s+=2;//2装备不可强化
 		}
-		int p = 0;
+		int p = 0,t=0;
 		for(int i=1;i<=5;i++){
 			if(inv.getMat()[i-1]==null)continue;
-			int flag=0;
-			if(inv.getMat()[i-1].getAmount()>2){
-				if(flag==0){
-					s+=512;
-					flag=1;//512 数量不对
-				}
-			}
+			t+=inv.getMat()[i-1].getAmount();
 			if(!BTB.getMaterial_Map().containsKey(inv.getMat()[i-1].getType())) s+=Math.pow(2, i+2);else p++;//8,16,32,64,128以下几个槽不是强化物
+		}
+		if(t>(int)BTB.getIntensifySettings().get("maxMaterials")){
+			s+=512;
 		}
 		if(p==0)s+=4;//4没强化物
 		if(getLvl(eq)>=(int)BTB.getIntensifySettings().get("maxLevel")) s+=256;//256满级了
@@ -247,7 +244,7 @@ public class Intensify{
 		if(eq==null)return;
 		NBTCompound itemData = BTB.getNBTManager().read(eq);
 		if(Intensify.getPropertyType(eq).equalsIgnoreCase("attack")){
-			double attack=7;
+			double attack=BTB.getEquip_Map().get(eq.getType()).getProperty_Base();
 			int flag=0;
 			if(itemData.containsKey("AttributeModifiers")){
 				NBTList list = itemData.getList("AttributeModifiers");
