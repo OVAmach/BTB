@@ -8,5 +8,6 @@
 		</attributes>
 	</classpathentry>
 	<classpathentry kind="lib" path="D:/游戏/我的世界/服务器/1.8.8/plugins/PowerNBT.jar"/>
+	<classpathentry kind="lib" path="D:/游戏/我的世界/服务器/1.8.8/spigot-1.8.8.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

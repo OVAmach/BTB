@@ -142,7 +142,11 @@ public class Intensify{
 		if(eq==null){
 			s+=1; //1没装备
 		}else{
-			if((!BTB.getEquip_Map().containsKey(eq.getType()))||eq.getAmount()!=1) s+=2;//2装备不可强化
+			if((!BTB.getEquip_Map().containsKey(eq.getType()))||eq.getAmount()!=1){
+				s+=2;//2装备不可强化
+			}else if(eq.getEnchantments().size()>0){
+				s+=2;
+			}
 		}
 		int p = 0,t=0;
 		for(int i=1;i<=5;i++){
